@@ -202,19 +202,32 @@ h1, h2, h3 {
     padding 0.3s ease, margin-top 0.3s ease, height 0.3s ease,
     box-shadow 0.3s ease, border-color 0.3s ease;
 }
+/* 捲動 / 手機選單展開：共用的膠囊幾何 */
 .site-header.is-scrolled .site-header__inner,
 body.menu-open .site-header__inner {
-  width: min(100% - 32px, 1360px);
+  width: min(100% - 24px, 1440px);
   height: 60px;
   margin-top: 16px;
+  padding-inline: 14px;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.58);
-  backdrop-filter: blur(24px) saturate(1.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  backdrop-filter: blur(22px) saturate(1.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
+}
+/* 動態島：捲動態（選單未開）＝深色半透明玻璃、白字 */
+body:not(.menu-open) .site-header.is-scrolled .site-header__inner {
+  background-color: rgba(9, 22, 40, 0.52);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 16px 38px -14px rgba(0, 0, 0, 0.55);
+  color: #fff;
+}
+/* 手機選單展開態：維持白膠囊 */
+body.menu-open .site-header__inner {
+  background-color: rgba(255, 255, 255, 0.62);
   border-color: rgba(255, 255, 255, 0.65);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px rgba(13, 36, 64, 0.04),
     0 12px 30px -10px rgba(0, 0, 0, 0.1);
   color: var(--ink);
 }
@@ -263,18 +276,18 @@ body.menu-open .site-header__inner {
 .main-nav a:hover { color: var(--gold-500); border-bottom-color: var(--gold-500); }
 .main-nav__tte { color: var(--gold-500) !important; }
 
-/* 捲動白膠囊態（及手機選單展開時）：連結與品牌文字轉深藍 */
-.site-header.is-scrolled .main-nav a { color: var(--body); }
-.site-header.is-scrolled .main-nav a:hover { color: var(--gold-600); }
-.site-header.is-scrolled .main-nav__tte { color: var(--gold-600) !important; }
-.site-header.is-scrolled .brand__text strong,
+/* 手機選單展開態（白膠囊）：連結與品牌文字轉深藍。捲動動態島維持白字（沿用基礎透明態） */
+body.menu-open .main-nav a { color: var(--body); }
+body.menu-open .main-nav a:hover { color: var(--gold-600); }
+body.menu-open .main-nav__tte { color: var(--gold-600) !important; }
 body.menu-open .brand__text strong { color: var(--ink); }
-.site-header.is-scrolled .brand__text small,
 body.menu-open .brand__text small { color: var(--muted); }
-.site-header.is-scrolled .brand__badge,
 body.menu-open .brand__badge { box-shadow: 0 0 0 1px var(--line); }
-.site-header.is-scrolled .menu-toggle,
 body.menu-open .menu-toggle { color: var(--navy-900); }
+
+/* 登入／加入：膠囊形按鈕；捲動態時收窄成動態島內的內層膠囊 */
+.site-header__cta { border-radius: 999px; }
+.site-header.is-scrolled .site-header__cta { padding: 0.58rem 1.35rem; }
 
 .menu-toggle { display: none; width: 40px; height: 40px; margin-left: auto; }
 .menu-toggle svg { width: 24px; height: 24px; }
