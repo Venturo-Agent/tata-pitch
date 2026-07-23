@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概念 A｜信息建築（Pentagram 式）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0D2440; --ink:#14263F; --body:#33465E; --muted:#5B6B7F; --gold:#C2A356; --line:#D9DFE7; --paper:#F7F8FA; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Noto Sans TC",sans-serif; color:var(--ink); background:#fff; }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 32px; }
+
+  /* 頂部：規線表格導覽 */
+  nav.top { border-bottom:1px solid var(--line); }
+  nav.top .wrap { display:flex; align-items:stretch; }
+  .brand { display:flex; align-items:center; gap:10px; padding:14px 24px 14px 0; border-right:1px solid var(--line); text-decoration:none; color:var(--ink); }
+  .brand img { width:40px; }
+  .brand strong { font-size:.95rem; font-weight:700; }
+  nav.top .links { display:flex; flex:1; }
+  nav.top .links a { display:flex; align-items:center; padding:0 18px; font-size:.85rem; color:var(--body); text-decoration:none; border-right:1px solid var(--line); }
+  nav.top .links a:first-child { border-left:1px solid var(--line); }
+  nav.top .links a:hover { color:var(--navy); background:var(--paper); }
+  nav.top .cta { display:flex; align-items:center; padding:0 0 0 24px; }
+  nav.top .cta a { font-size:.85rem; font-weight:700; color:var(--navy); text-decoration:none; border-bottom:2px solid var(--gold); padding-bottom:2px; }
+
+  /* Hero：大標＋事實規格表 */
+  .hero { display:grid; grid-template-columns:1.6fr 1fr; border-bottom:1px solid var(--line); }
+  .hero__left { padding:72px 48px 64px 0; border-right:1px solid var(--line); }
+  .hero__no { font-size:.8rem; font-weight:700; letter-spacing:.2em; color:var(--gold); margin-bottom:20px; }
+  .hero h1 { font-size:clamp(3rem,6.5vw,5.4rem); font-weight:900; line-height:1.08; letter-spacing:.01em; }
+  .hero__sub { margin-top:24px; max-width:46ch; color:var(--body); line-height:1.9; }
+  .hero__facts { display:grid; grid-template-rows:repeat(4,1fr); }
+  .fact { display:flex; align-items:baseline; justify-content:space-between; padding:0 32px; border-bottom:1px solid var(--line); }
+  .fact:last-child { border-bottom:0; }
+  .fact b { font-size:2rem; font-weight:900; color:var(--navy); font-variant-numeric:tabular-nums; }
+  .fact span { font-size:.82rem; color:var(--muted); }
+  .hero__strip { display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--line); }
+  .hero__strip img { width:100%; height:180px; object-fit:cover; filter:saturate(.75) contrast(1.02); display:block; }
+  .hero__strip img + img { border-left:1px solid var(--line); }
+  .caption { font-size:.75rem; color:var(--muted); padding:8px 0 0; }
+
+  /* 服務：序號索引列 */
+  .sec { padding:72px 0; }
+  .sec__head { display:flex; align-items:baseline; justify-content:space-between; border-bottom:2px solid var(--navy); padding-bottom:14px; margin-bottom:0; }
+  .sec__head h2 { font-size:1.6rem; font-weight:900; }
+  .sec__head span { font-size:.8rem; color:var(--muted); letter-spacing:.15em; }
+  .idx { display:grid; grid-template-columns:1fr 1fr; }
+  .idx a { display:grid; grid-template-columns:64px 1fr auto; align-items:baseline; gap:16px; padding:20px 24px 20px 0; border-bottom:1px solid var(--line); text-decoration:none; }
+  .idx a:nth-child(odd) { border-right:1px solid var(--line); }
+  .idx a:nth-child(even) { padding-left:32px; }
+  .idx i { font-style:normal; font-weight:900; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .idx b { font-size:1.05rem; font-weight:700; color:var(--ink); }
+  .idx small { display:block; font-weight:400; color:var(--muted); margin-top:4px; line-height:1.7; }
+  .idx em { font-style:normal; color:var(--muted); transition:color .2s; }
+  .idx a:hover em { color:var(--navy); }
+  .idx a:hover b { color:var(--navy); }
+
+  footer { border-top:2px solid var(--navy); padding:28px 0; font-size:.8rem; color:var(--muted); display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#"><img src="../assets/img/tata-logo.png" alt="TATA"><strong>台北市旅行商業同業公會</strong></a>
+  <div class="links">
+    <a href="#">公會介紹</a><a href="#">最新消息</a><a href="#">活動專區</a><a href="#">數位服務</a><a href="#">異業合作</a><a href="#">會員名錄</a><a href="#">聯絡我們</a>
+  </div>
+  <div class="cta"><a href="#">登入／加入會員</a></div>
+</div></nav>
+
+<header class="wrap">
+  <div class="hero">
+    <div class="hero__left">
+      <p class="hero__no">TAIPEI ASSOCIATION OF TRAVEL AGENTS</p>
+      <h1>凝聚旅行<br>產業力量</h1>
+      <p class="hero__sub">台灣最大旅行產業組織。自 1969 年起，與會員旅行社共同推動台灣觀光競爭力、數位轉型與國際交流。</p>
+    </div>
+    <div class="hero__facts">
+      <div class="fact"><b>1969</b><span>創立年份</span></div>
+      <div class="fact"><b>1,459</b><span>會員旅行社</span></div>
+      <div class="fact"><b>18</b><span>專業委員會</span></div>
+      <div class="fact"><b>100+</b><span>年度活動</span></div>
+    </div>
+  </div>
+  <div class="hero__strip">
+    <img src="../assets/img/hero-sunset.jpg" alt="">
+    <img src="../assets/img/airport-hall.jpg" alt="">
+    <img src="../assets/img/travel-fair.jpg" alt="">
+  </div>
+  <p class="caption">左起：台北天際線、桃園國際機場第一航廈出境大廳、台北國際旅展展場。</p>
+</header>
+
+<main class="wrap sec">
+  <div class="sec__head"><h2>核心服務</h2><span>INDEX 01–08</span></div>
+  <div class="idx">
+    <a href="#"><i>01</i><span><b>會員服務</b><small>入會申請、年費管理、數位會員證</small></span><em>→</em></a>
+    <a href="#"><i>02</i><span><b>法規諮詢</b><small>旅行業法規、護照簽證、消費者保護</small></span><em>→</em></a>
+    <a href="#"><i>03</i><span><b>教育訓練</b><small>領隊導遊考照、AI 數位技能工作坊</small></span><em>→</em></a>
+    <a href="#"><i>04</i><span><b>國際交流</b><small>國際會展、全球夥伴締結</small></span><em>→</em></a>
+    <a href="#"><i>05</i><span><b>數位轉型</b><small>數位化解決方案諮詢與導入輔導</small></span><em>→</em></a>
+    <a href="#"><i>06</i><span><b>AI 工具導入</b><small>AI 行程規劃、智能客服、自動化行銷</small></span><em>→</em></a>
+    <a href="#"><i>07</i><span><b>產業媒合</b><small>B2B 商談、供應商與策略夥伴引薦</small></span><em>→</em></a>
+    <a href="#"><i>08</i><span><b>危機處理</b><small>緊急應對、旅遊糾紛協調</small></span><em>→</em></a>
+  </div>
+</main>
+
+<footer class="wrap"><span>© 2026 台北市旅行商業同業公會</span><span>概念 A · 信息建築</span></footer>
+</body>
+</html>

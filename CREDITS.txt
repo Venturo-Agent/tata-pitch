@@ -1,0 +1,61 @@
+CREDITS — 圖片來源（全部取自 Wikimedia Commons，以 1600px 寬縮圖下載，頁面以 CSS filter 統一色調）
+
+1. assets/img/hero-sunset.jpg（Hero 主圖：台北 101 黃昏天際線）
+   原始檔名：File:Taipei sunset skyline 2019.jpg（原圖 7360x4912）
+   作者：大頭家族 ｜ 授權：CC BY-SA 2.0
+   來源：https://commons.wikimedia.org/wiki/File:Taipei_sunset_skyline_2019.jpg
+
+2. assets/img/skyline-night.jpg（加入公會段背景：台北 101 夜景）
+   原始檔名：File:View of Taipei, Taiwan Skyline at dusk in 2014.jpg（原圖 5250x3494）
+   作者：Romain Pontida ｜ 授權：CC BY-SA 2.0
+   來源：https://commons.wikimedia.org/wiki/File:View_of_Taipei,_Taiwan_Skyline_at_dusk_in_2014.jpg
+
+3. assets/img/airport-hall.jpg（關於公會：桃園機場第一航廈出境大廳）
+   原始檔名：File:Taoyuan Airport T1 Departures Hall 20221224.jpg（原圖 6000x4000）
+   作者：Wei-Te Wong ｜ 授權：CC BY-SA 2.0
+   來源：https://commons.wikimedia.org/wiki/File:Taoyuan_Airport_T1_Departures_Hall_20221224.jpg
+
+4. assets/img/travel-fair.jpg（最新消息頭條：台北旅展展場）
+   原始檔名：File:2021台北旅展宣傳嘉義縣旅遊補助.jpg（原圖 2400x1600）
+   作者：嘉義縣政府 ｜ 授權：Attribution
+   來源：https://commons.wikimedia.org/wiki/File:2021%E5%8F%B0%E5%8C%97%E6%97%85%E5%B1%95%E5%AE%A3%E5%82%B3%E5%98%89%E7%BE%A9%E7%B8%A3%E6%97%85%E9%81%8A%E8%A3%9C%E5%8A%A9.jpg
+
+5. assets/img/podcast-studio.jpg（媒體中心：Podcast 錄音室麥克風）
+   原始檔名：File:Microphones in SPNN Podcast studio-01.jpg（原圖 5712x4284）
+   作者：Myotus ｜ 授權：CC BY 4.0
+   來源：https://commons.wikimedia.org/wiki/File:Microphones_in_SPNN_Podcast_studio-01.jpg
+
+6. assets/img/taipei-101-twtc.jpg（影音縮圖：台北世界貿易中心與台北 101）
+   原始檔名：File:TWTC ITB, TICC and Taipei 101 at sunset 20180825.jpg（原圖 3024x4032）
+   作者：毛貓大少爺 ｜ 授權：CC BY-SA 2.0
+   來源：https://commons.wikimedia.org/wiki/File:TWTC_ITB,_TICC_and_Taipei_101_at_sunset_20180825.jpg
+
+7. assets/img/eva-aircraft.jpg（影音縮圖：長榮航空波音 787 於台北松山機場）
+   原始檔名：File:EVA Air Boeing 787-10 B-17808 lining up at Taipei Songshan February 2026.jpg（原圖 8256x5504）
+   作者：4300streetcar ｜ 授權：CC BY 4.0
+   來源：https://commons.wikimedia.org/wiki/File:EVA_Air_Boeing_787-10_B-17808_lining_up_at_Taipei_Songshan_February_2026.jpg
+
+8. assets/img/airport-night.jpg（影音縮圖：桃園機場第二航廈報到大廳）
+   原始檔名：File:Taiwan Taoyuan International Airport Terminal 2 Check-in Hall 20200815.jpg（原圖 6000x4000）
+   作者：Cheng-en Cheng ｜ 授權：CC BY-SA 2.0
+   來源：https://commons.wikimedia.org/wiki/File:Taiwan_Taoyuan_International_Airport_Terminal_2_Check-in_Hall_20200815.jpg
+
+註：下載候選但未採用、已刪除的圖片不列入；未採用原因包括畫面含簡體字招牌（CIFTIS 展館）、人物特寫肖像、品牌露出過重或色調不合。
+
+9. assets/img/hero-video.webm（Hero 背景影片：象山眺望台北 101）
+   原始檔名：File:Taipei 101 - 2013 12 9.webm（原片 1920x1080，32 秒）
+   作者：Nesnad ｜ 授權：CC BY 4.0
+   來源：https://commons.wikimedia.org/wiki/File:Taipei_101_-_2013_12_9.webm
+   使用版本：Wikimedia 480p 轉檔，裁取 13s 起的 101 城市段（前段登山步道不取用，約 21 秒、2.4MB）；頁面以 CSS filter 壓暗統一色調，loop 循環播放。
+
+10. assets/img/tata-logo.png（TATA 官方識別，提案方提供）
+    來源：委託方提供之 TATALOGO.4c5e9f5b.png，去白底裁邊後使用。assets/img/favicon.png 為同一標誌之 64px 徽章版。
+
+11. assets/img/team-1.jpg ～ team-5.jpg（領航團隊示意肖像，Pexels）
+    team-1｜Pexels photo 37605828（Shiva Kumar Reddy）— https://www.pexels.com/photo/37605828/
+    team-2｜Pexels photo 17049766（Tran Nhu Tuan）— https://www.pexels.com/photo/portrait-of-businessman-17049766/
+    team-3｜Pexels photo 29995647 — https://images.pexels.com/photos/29995647/
+    team-4｜Pexels photo 17052321 — https://images.pexels.com/photos/17052321/
+    team-5｜Pexels photo 26336866 — https://images.pexels.com/photos/26336866/
+    授權：Pexels License（免費商用、免署名）。以 800px 寬下載，頁面統一套降飽和冷調 filter。
+    註：僅為設計提案之示意肖像，非真實理監事照片。

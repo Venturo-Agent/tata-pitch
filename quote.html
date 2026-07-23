@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>官網整合建置專案 報價書｜台北市旅行商業同業公會 TATA</title>
+<meta name="description" content="TATA 官網整合建置專案報價書：專案期間 2026 年 8 月至 10 月，含核心功能開發、後台管理系統、內部系統整合與金流串接。">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  /* ---------- 報價書專用元件（沿用全站 token） ---------- */
+  .q-hero__meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
+    margin-top: 2rem; padding-top: 1.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 0.92rem; color: rgba(255, 255, 255, 0.78);
+  }
+  .q-hero__meta strong { color: var(--gold-500); font-weight: 500; margin-right: 0.5em; }
+
+  /* 工作範圍：編號列表 */
+  .scope-list { border-top: 1px solid var(--line); margin-top: 2.5rem; }
+  .scope-list li {
+    display: grid; grid-template-columns: 72px 1fr; gap: 1.2rem;
+    padding: 2rem 0; border-bottom: 1px solid var(--line);
+  }
+  .scope-list__num {
+    font-family: var(--serif); font-weight: 700; font-size: 2rem;
+    color: var(--navy-900); font-variant-numeric: tabular-nums; line-height: 1.3;
+    transition: color 0.25s ease;
+  }
+  .scope-list li:hover .scope-list__num { color: var(--gold-500); }
+  .scope-list h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .scope-list p { font-size: 0.98rem; max-width: 62ch; }
+  .scope-list__subs {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+    list-style: none; padding: 0;
+  }
+  .scope-list__subs li {
+    display: block; padding: 0.35rem 0.9rem; border: 1px solid var(--line);
+    border-radius: 999px; font-size: 0.85rem; color: var(--body); background: #fff;
+  }
+  .scope-note { margin-top: 1.6rem; font-size: 0.92rem; color: var(--muted); }
+
+  /* 時程：月份列（深藍段） */
+  .phase-list { border-top: 1px solid var(--line-dark, rgba(255,255,255,0.16)); margin-top: 2.5rem; }
+  .phase-row {
+    display: grid; grid-template-columns: 140px 220px 1fr; gap: 1.5rem;
+    align-items: baseline; padding: 1.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .phase-row__month {
+    font-family: var(--serif); font-weight: 700; font-size: 1.6rem;
+    color: var(--gold-500); letter-spacing: 0.05em;
+  }
+  .phase-row__month small { display: block; font-size: 0.72rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); margin-top: 0.3rem; font-weight: 400; }
+  .phase-row__title { font-weight: 700; font-size: 1.12rem; color: #fff; }
+  .phase-row__desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.72); }
+
+  /* 費用表 */
+  .fee-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-variant-numeric: tabular-nums; }
+  .fee-table th, .fee-table td { padding: 1.1rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
+  .fee-table thead th {
+    font-size: 0.82rem; letter-spacing: 0.16em; color: var(--muted);
+    font-weight: 500; border-bottom: 1px solid var(--navy-900);
+  }
+  .fee-table td:last-child, .fee-table th:last-child { text-align: right; }
+  .fee-table tbody td:first-child { font-weight: 500; color: var(--ink); }
+
+  .fee-total {
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem;
+    margin-top: 3rem; padding: 2.2rem 0 0; border-top: 1px solid var(--navy-900);
+  }
+  .fee-total__label { font-size: 0.9rem; letter-spacing: 0.2em; color: var(--muted); }
+  .fee-total__num {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4rem); color: var(--navy-900);
+    font-variant-numeric: tabular-nums; line-height: 1.15;
+  }
+  .fee-total__num small { font-size: 0.38em; font-weight: 700; color: var(--gold-600); margin-right: 0.3em; letter-spacing: 0.08em; }
+  .fee-total__zh { margin-top: 0.4rem; color: var(--body); font-size: 1rem; }
+  .fee-notes { margin-top: 1.8rem; font-size: 0.9rem; color: var(--muted); line-height: 2; }
+
+  /* 合作說明 */
+  .terms-list { border-top: 1px solid var(--line); margin-top: 2.5rem; }
+  .terms-list li {
+    display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem;
+    padding: 1.4rem 0; border-bottom: 1px solid var(--line);
+    font-size: 0.98rem;
+  }
+  .terms-list__k { font-weight: 700; color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .phase-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .terms-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+    .fee-total { grid-template-columns: 1fr; gap: 0.8rem; }
+  }
+  @media print {
+    .site-header, .mobile-nav, .menu-toggle, .q-cta { display: none !important; }
+    .page-hero { padding: 3rem 0 2rem; }
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ============ 主導覽（初始透明，捲動白膠囊） ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap site-header__inner">
+    <a href="index.html" class="brand" aria-label="台北市旅行商業同業公會 首頁">
+      <span class="brand__badge" aria-hidden="true">
+        <img src="assets/img/tata-logo.png" alt="" width="45" height="30">
+      </span>
+      <span class="brand__text">
+        <strong>台北市旅行商業同業公會</strong>
+        <small>TAIPEI ASSOCIATION OF TRAVEL AGENTS</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="主導覽">
+      <div class="nav-item"><a href="index.html">首頁</a></div>
+      <div class="nav-item has-drop">
+        <a href="about.html">公會介紹</a>
+        <div class="nav-drop">
+          <a href="about.html">公會簡介</a>
+          <a href="about.html#chairman">理事長介紹</a>
+          <a href="about.html#org">公會組織</a>
+          <a href="about.html#committees">委員會</a>
+          <a href="about.html#secretariat">秘書處</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="news.html">最新消息</a>
+        <div class="nav-drop">
+          <a href="news.html">公會訊息</a>
+          <a href="news.html?cat=official">公會公文</a>
+          <a href="news.html?cat=event">活動消息</a>
+          <a href="news.html?cat=media">新聞媒體</a>
+          <a href="news.html?cat=industry">產業資訊</a>
+          <a href="news.html?cat=tourism">觀光新訊</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="events.html">活動專區</a>
+        <div class="nav-drop">
+          <a href="events.html#tte">TTE 台北國際旅展</a>
+          <a href="events.html?cat=training">教育訓練</a>
+          <a href="events.html?cat=forum">產業論壇</a>
+          <a href="events.html?cat=b2b">B2B 商談會</a>
+          <a href="events.html#calendar">活動月曆</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="services.html">數位服務</a>
+        <div class="nav-drop">
+          <a href="services.html#ai-service">AI 客服</a>
+          <a href="services.html#newsletter">電子月刊</a>
+          <a href="services.html#podcast">Podcast</a>
+          <a href="services.html#video">影音中心</a>
+          <a href="services.html#ai-secretary">AI 會員秘書</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="partners.html">異業合作</a></div>
+      <div class="nav-item"><a href="members.html">會員名錄</a></div>
+      <div class="nav-item"><a href="contact.html">聯絡我們</a></div>
+      <div class="nav-item"><a href="events.html#tte" class="main-nav__tte">TTE台北旅展</a></div>
+    </nav>
+    <a href="contact.html#join" class="btn btn--gold site-header__cta">登入／加入會員</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileNav">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- 手機版選單 -->
+<div class="mobile-nav" id="mobileNav" hidden>
+  <nav aria-label="手機版主導覽">
+    <a href="index.html">首頁</a>
+    <p class="mobile-nav__group">公會介紹</p>
+    <a href="about.html">公會簡介</a>
+    <a href="about.html#chairman">理事長介紹</a>
+    <a href="about.html#org">公會組織</a>
+    <a href="about.html#committees">委員會</a>
+    <a href="about.html#secretariat">秘書處</a>
+    <p class="mobile-nav__group">最新消息</p>
+    <a href="news.html">公會訊息</a>
+    <a href="news.html?cat=official">公會公文</a>
+    <a href="news.html?cat=event">活動消息</a>
+    <a href="news.html?cat=media">新聞媒體</a>
+    <a href="news.html?cat=industry">產業資訊</a>
+    <p class="mobile-nav__group">活動專區</p>
+    <a href="events.html">近期活動</a>
+    <a href="events.html#tte">TTE 台北國際旅展</a>
+    <a href="events.html#calendar">活動月曆</a>
+    <p class="mobile-nav__group">數位服務</p>
+    <a href="services.html#ai-service">AI 客服</a>
+    <a href="services.html#newsletter">電子月刊</a>
+    <a href="services.html#podcast">Podcast</a>
+    <a href="services.html#ai-secretary">AI 會員秘書</a>
+    <p class="mobile-nav__group">更多</p>
+    <a href="partners.html">異業合作</a>
+    <a href="members.html">會員名錄</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+  <a href="contact.html#join" class="btn btn--ghost-gold mobile-nav__cta">登入／加入會員</a>
+  <div class="mobile-nav__contact">
+    <a href="tel:+886225312191">(02) 2531-2191</a>
+    <a href="mailto:service@tata.org.tw">service@tata.org.tw</a>
+  </div>
+</div>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="page-hero__crumb"><a href="index.html">首頁</a> ／ 專案報價</p>
+    <h1>官網整合建置專案 報價書</h1>
+    <p class="page-hero__lead">整併現行網站分散的服務與內容，開發核心功能與後台管理系統，讓公會日後無需依賴工程師，即可自主維運官網。</p>
+    <div class="q-hero__meta">
+      <span><strong>委託方</strong>台北市旅行商業同業公會</span>
+      <span><strong>承作方</strong>漫途整合行銷 VENTURO</span>
+      <span><strong>專案期間</strong>2026 年 8 月 — 10 月（共 3 個月）</span>
+      <span><strong>報價日期</strong>2026 年 7 月 23 日</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 專案概述 ============ -->
+<section class="page-section page-section--paper">
+  <div class="wrap" style="max-width:860px">
+    <h2 class="sub-title">專案概述</h2>
+    <p class="sub-lead">現行官網的服務各自獨立——最新消息、影音媒體專區、線上報名服務、工會場地租借服務、電子公文服務與 AI 客服分散於不同系統，內容繁雜、維護不易。本案以「整合」為核心：重建官網架構、整併既有內容，並開發四大核心功能與完整後台管理系統，串接公會內部行政流程；同時以數位金流串接銀行端，減輕每年會費與活動的對帳負擔，讓網站成為公會可長期自主營運的數位平台。</p>
+  </div>
+</section>
+
+<!-- ============ 工作內容與開發範圍 ============ -->
+<section class="page-section">
+  <div class="wrap" style="max-width:960px">
+    <h2 class="sub-title">工作內容與開發範圍</h2>
+    <p class="sub-lead">除網站架設與既有內容的盤點整合外，本案開發與整合的範圍如下。</p>
+    <ol class="scope-list">
+      <li>
+        <span class="scope-list__num">01</span>
+        <div>
+          <h3>核心功能開發</h3>
+          <p>開發公會營運所需的四項線上服務，取代目前分散的作業方式；其中收款金流結合永豐銀行，降低會務人員查帳、收款的作業時間。</p>
+          <ul class="scope-list__subs">
+            <li>電子公文服務</li>
+            <li>公會場地租借服務</li>
+            <li>AI 客服系統</li>
+            <li>收款金流數位化</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <span class="scope-list__num">02</span>
+        <div>
+          <h3>後台管理系統</h3>
+          <p>提供完整的後台管理系統，公會人員未來無需透過專業工程師，即可自行管理與更新網站——例如更換圖片、發佈與維護內容，或因應理事長交接等組織異動進行調整。</p>
+        </div>
+      </li>
+      <li>
+        <span class="scope-list__num">03</span>
+        <div>
+          <h3>內部系統整合</h3>
+          <p>後台與公會內部行政流程串接，整合帳務流程，以及會計請款功能與請款系統，讓網站資料與內部作業銜接。</p>
+        </div>
+      </li>
+      <li>
+        <span class="scope-list__num">04</span>
+        <div>
+          <h3>數位金流與系統維護</h3>
+          <p>協助串接金流服務並與永豐銀行端串接，支援場地租借、活動報名等線上收款，直接減輕每年會費對帳與公會活動對帳的行政負擔；並以此架構提供後續的系統維護。</p>
+        </div>
+      </li>
+      <li>
+        <span class="scope-list__num">05</span>
+        <div>
+          <h3>現場 AI 顧問服務</h3>
+          <p>專案期間每週提供 4 小時現場 AI 顧問服務，協助公會團隊熟悉後台操作與 AI 工具應用，讓新系統順利融入日常行政作業。</p>
+        </div>
+      </li>
+      <li>
+        <span class="scope-list__num">06</span>
+        <div>
+          <h3>TTE 台北國際旅展網站</h3>
+          <p>TTE 旅展網站（tte.tw）一併納入本案建置，提供網站切版、架構規劃與後台服務串接；視覺素材與設計由公會提供，本案不包含素材設計。</p>
+        </div>
+      </li>
+    </ol>
+    <p class="scope-note">上述範圍另包含現行網站內容之盤點與整合遷移（最新消息、影音媒體專區、線上報名服務、場地租借、電子公文、AI 客服等）。</p>
+  </div>
+</section>
+
+<!-- ============ 專案時程 ============ -->
+<section class="page-section page-section--navy">
+  <div class="wrap" style="max-width:960px">
+    <h2 class="sub-title">專案時程</h2>
+    <p class="sub-lead">專案走期為一季（2026 年 8 月至 10 月），三個月的工作規劃如下。</p>
+    <div class="phase-list">
+      <div class="phase-row">
+        <div class="phase-row__month">八月<small>AUG 2026</small></div>
+        <div class="phase-row__title">架構確立・內容盤點</div>
+        <p class="phase-row__desc">網站架構與設計方向定稿、既有內容盤點與整合規劃、核心功能開發啟動。</p>
+      </div>
+      <div class="phase-row">
+        <div class="phase-row__month">九月<small>SEP 2026</small></div>
+        <div class="phase-row__title">功能開發・後台建置</div>
+        <p class="phase-row__desc">電子公文、場地租借、AI 客服、收款金流四大核心功能開發，後台管理系統建置，帳務與會計請款流程串接，TTE 旅展網站切版與後台串接。</p>
+      </div>
+      <div class="phase-row">
+        <div class="phase-row__month">十月<small>OCT 2026</small></div>
+        <div class="phase-row__title">金流串接・驗收上線</div>
+        <p class="phase-row__desc">金流服務串接、全站測試與調整、驗收上線，以及後台操作交接。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 專案費用 ============ -->
+<section class="page-section page-section--paper">
+  <div class="wrap" style="max-width:960px">
+    <h2 class="sub-title">專案費用</h2>
+    <p class="sub-lead">本案以月費方式計價，費用涵蓋上述全部工作範圍。</p>
+    <table class="fee-table">
+      <thead>
+        <tr><th scope="col">項目</th><th scope="col">期間</th><th scope="col">金額</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>官網整合建置專案（第一期）</td><td>2026 年 8 月</td><td>NT$20,000</td></tr>
+        <tr><td>官網整合建置專案（第二期）</td><td>2026 年 9 月</td><td>NT$20,000</td></tr>
+        <tr><td>官網整合建置專案（第三期）</td><td>2026 年 10 月</td><td>NT$20,000</td></tr>
+      </tbody>
+    </table>
+    <div class="fee-total">
+      <div>
+        <p class="fee-total__label">專案總費用 PROJECT TOTAL</p>
+        <p class="fee-total__zh">新台幣陸萬元整</p>
+      </div>
+      <p class="fee-total__num"><small>NT$</small>60,000</p>
+    </div>
+    <p class="fee-notes">※ 付款方式：按月請款，每月 NT$20,000，共三期。</p>
+  </div>
+</section>
+
+<!-- ============ 合作說明 ============ -->
+<section class="page-section">
+  <div class="wrap" style="max-width:960px">
+    <h2 class="sub-title">合作說明</h2>
+    <ul class="terms-list">
+      <li><span class="terms-list__k">費用包含</span><span>本報價涵蓋「工作內容與開發範圍」所列之設計、開發、整合、測試與上線、專案期間內的系統維護，以及每週 4 小時現場 AI 顧問服務。</span></li>
+      <li><span class="terms-list__k">費用不包含</span><span>主機與網域費用、金流服務手續費，以及第三方服務費用（如 AI 客服之 API 用量費）依實際支出另計；TTE 旅展網站之視覺素材與設計由公會提供，不包含於本案。</span></li>
+      <li><span class="terms-list__k">後續維護</span><span>專案上線後之長期系統維護，以本案建置之架構為基礎提供，維護方案與費用另議。</span></li>
+      <li><span class="terms-list__k">報價有效期</span><span>本報價自報價日起 30 天內有效，逾期雙方另行確認。</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 下一步 CTA ============ -->
+<section class="page-section page-section--navy q-cta">
+  <div class="wrap" style="max-width:760px; text-align:center">
+    <h2 class="sub-title">確認與下一步</h2>
+    <p class="sub-lead" style="margin: 0 auto 2.2rem">報價內容如需調整，或確認合作後的啟動時程，歡迎隨時與我們聯繫。</p>
+    <a href="contact.html" class="btn btn--gold">聯絡我們</a>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div class="site-footer__brand">
+      <span class="brand__badge brand__badge--footer" aria-hidden="true">
+        <img src="assets/img/tata-logo.png" alt="" width="60" height="40">
+      </span>
+      <p class="site-footer__name">台北市旅行商業同業公會</p>
+      <p class="site-footer__en">TAIPEI ASSOCIATION OF TRAVEL AGENTS</p>
+      <p class="site-footer__desc">成立於 1969 年，凝聚旅行產業力量，提升台灣觀光競爭力，推動產業數位轉型，建立 AI 賦能的產業平台。</p>
+      <address>
+        台北市中山區四平街 20 號 6 樓<br>
+        <a href="tel:+886225312191">(02) 2531-2191</a><br>
+        <a href="mailto:service@tata.org.tw">service@tata.org.tw</a><br>
+        www.tata.org.tw
+      </address>
+    </div>
+    <nav class="site-footer__col" aria-label="公會介紹">
+      <h3>公會介紹</h3>
+      <a href="about.html">公會簡介</a>
+      <a href="about.html#chairman">理事長介紹</a>
+      <a href="about.html#org">公會組織</a>
+      <a href="about.html#committees">委員會</a>
+      <a href="about.html#secretariat">秘書處</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="最新消息">
+      <h3>最新消息</h3>
+      <a href="news.html">公會訊息</a>
+      <a href="news.html?cat=official">公會公文</a>
+      <a href="news.html?cat=event">活動消息</a>
+      <a href="news.html?cat=media">新聞稿</a>
+      <a href="news.html?cat=industry">產業資訊</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="活動中心">
+      <h3>活動中心</h3>
+      <a href="events.html">活動報名</a>
+      <a href="events.html?cat=training">教育訓練</a>
+      <a href="events.html?cat=forum">產業論壇</a>
+      <a href="partners.html">國際交流</a>
+      <a href="events.html?cat=b2b">B2B 商談會</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="數位服務與產業資源">
+      <h3>數位服務</h3>
+      <a href="services.html#ai-service">AI 客服</a>
+      <a href="services.html#newsletter">電子月刊</a>
+      <a href="services.html#podcast">Podcast</a>
+      <a href="services.html#video">影音中心</a>
+      <a href="services.html#ai-secretary">AI 會員秘書</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="產業資源">
+      <h3>產業資源</h3>
+      <a href="members.html">會員名錄</a>
+      <a href="services.html">法規資訊</a>
+      <a href="services.html">常用表格</a>
+      <a href="contact.html">聯絡秘書處</a>
+    </nav>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="wrap site-footer__bottom-inner">
+      <p>© 2026 台北市旅行商業同業公會 Taipei Association of Travel Agents. All rights reserved.</p>
+      <nav aria-label="法務連結">
+        <a href="legal.html">隱私政策</a>
+        <a href="legal.html#terms">使用條款</a>
+        <a href="index.html">網站地圖</a>
+      </nav>
+    </div>
+    <p class="site-footer__disclaimer">本報價書由漫途整合行銷（VENTURO）提供；頁面所附之網站內容為設計提案示範（Redesign Concept），非 TATA 官方網站。</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

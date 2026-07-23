@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概念 C｜規線骨架 × 大圖大字（A+C）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0D2440; --deep:#081527; --ink:#14263F; --body:#33465E; --muted:#5B6B7F; --gold:#C2A356; --line:#D9DFE7; --line-d:rgba(255,255,255,.16); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Noto Sans TC",sans-serif; color:var(--ink); background:#fff; }
+  .wrap { max-width:1320px; margin:0 auto; padding:0 36px; }
+
+  /* Hero：深藍大圖＋壓線大字 */
+  .hero { position:relative; min-height:92vh; background:var(--deep); color:#fff; overflow:hidden; display:flex; flex-direction:column; }
+  .hero__bg { position:absolute; inset:0; }
+  .hero__bg img { width:100%; height:100%; object-fit:cover; opacity:.5; filter:saturate(.7) brightness(.75); }
+  .hero__bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,21,39,.55), rgba(8,21,39,.15) 45%, rgba(8,21,39,.85)); }
+  .hero nav { position:relative; z-index:2; display:flex; align-items:center; gap:28px; padding:26px 36px; border-bottom:1px solid var(--line-d); }
+  .hero nav img { width:38px; }
+  .hero nav .links { display:flex; gap:26px; margin-left:auto; }
+  .hero nav a { color:rgba(255,255,255,.8); text-decoration:none; font-size:.85rem; }
+  .hero nav a:hover { color:#fff; }
+  .hero nav .cta { border:1px solid var(--gold); color:var(--gold); padding:.5rem 1.1rem; }
+  .hero__body { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:0 36px 0; }
+  .hero h1 { font-size:clamp(4rem,10vw,9rem); font-weight:900; line-height:1.02; letter-spacing:.01em; }
+  .hero h1 span { color:transparent; -webkit-text-stroke:1.5px rgba(255,255,255,.85); }
+  .hero__row { display:grid; grid-template-columns:1fr auto; align-items:end; gap:40px; border-top:1px solid var(--line-d); margin-top:36px; padding:22px 0 30px; }
+  .hero__row p { max-width:52ch; color:rgba(255,255,255,.75); line-height:1.9; }
+  .hero__facts { display:flex; gap:44px; }
+  .hero__facts b { display:block; font-size:1.7rem; font-weight:900; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .hero__facts span { font-size:.75rem; color:rgba(255,255,255,.55); letter-spacing:.1em; }
+
+  /* 消息：規線列表（白底） */
+  .sec { padding:80px 0; }
+  .sec__head { display:grid; grid-template-columns:auto 1fr auto; align-items:baseline; gap:24px; margin-bottom:36px; }
+  .sec__head h2 { font-size:2rem; font-weight:900; }
+  .sec__head .rule { height:1px; background:var(--ink); align-self:center; }
+  .sec__head span { font-size:.8rem; color:var(--muted); letter-spacing:.15em; }
+  .news a { display:grid; grid-template-columns:120px 110px 1fr auto; align-items:baseline; gap:20px; padding:18px 0; border-bottom:1px solid var(--line); text-decoration:none; }
+  .news a:hover b { color:var(--navy); }
+  .news a:hover { background:linear-gradient(90deg, rgba(194,163,86,.06), transparent 60%); }
+  .news i { font-style:normal; color:var(--muted); font-size:.85rem; font-variant-numeric:tabular-nums; }
+  .news u { text-decoration:none; font-size:.78rem; color:var(--gold); font-weight:700; }
+  .news b { font-weight:700; color:var(--ink); font-size:1.05rem; }
+  .news em { font-style:normal; color:var(--muted); }
+
+  /* 大圖區塊＋索引 */
+  .feature { display:grid; grid-template-columns:1.2fr 1fr; border-top:2px solid var(--ink); }
+  .feature__img { min-height:520px; background:var(--deep); position:relative; overflow:hidden; }
+  .feature__img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.75); }
+  .feature__img p { position:absolute; left:28px; bottom:24px; color:#fff; font-size:.78rem; letter-spacing:.1em; background:rgba(8,21,39,.55); padding:6px 12px; }
+  .feature__list { border-left:1px solid var(--line); display:flex; flex-direction:column; }
+  .feature__list a { flex:1; display:flex; align-items:center; gap:18px; padding:0 32px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); transition:background .25s; }
+  .feature__list a:hover { background:#F7F8FA; }
+  .feature__list i { font-style:normal; font-weight:900; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .feature__list b { font-size:1.1rem; font-weight:700; }
+
+  footer { border-top:2px solid var(--ink); padding:28px 36px; font-size:.8rem; color:var(--muted); display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__bg"><img src="../assets/img/skyline-night.jpg" alt=""></div>
+  <nav>
+    <img src="../assets/img/tata-logo.png" alt="TATA">
+    <div class="links">
+      <a href="#">公會介紹</a><a href="#">最新消息</a><a href="#">活動專區</a><a href="#">數位服務</a><a href="#">異業合作</a><a href="#">會員名錄</a>
+      <a href="#" class="cta">登入／加入會員</a>
+    </div>
+  </nav>
+  <div class="hero__body">
+    <h1>凝聚旅行<br><span>產業力量</span></h1>
+    <div class="hero__row">
+      <p>台灣最大旅行產業組織。自 1969 年起，超過 1,400 家會員旅行社，共同推動台灣觀光競爭力、產業數位轉型與國際交流。</p>
+      <div class="hero__facts">
+        <div><b>1969</b><span>創立</span></div>
+        <div><b>1,459</b><span>會員</span></div>
+        <div><b>18</b><span>委員會</span></div>
+        <div><b>100+</b><span>年度活動</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap sec">
+  <div class="sec__head"><h2>最新消息</h2><div class="rule"></div><span>NEWS 2026</span></div>
+  <div class="news">
+    <a href="#"><i>06-15</i><u>活動消息</u><b>2026 TTE 台北國際旅展 正式啟動報名</b><em>→</em></a>
+    <a href="#"><i>06-12</i><u>公會訊息</u><b>AI 數位轉型工作坊 第三期報名開始</b><em>→</em></a>
+    <a href="#"><i>06-10</i><u>產業資訊</u><b>觀光署公布 2026 上半年入境旅客統計</b><em>→</em></a>
+    <a href="#"><i>06-08</i><u>公會公文</u><b>115 年度第二次理監事聯席會議紀錄</b><em>→</em></a>
+    <a href="#"><i>06-05</i><u>新聞媒體</u><b>TATA 與新加坡旅遊業協會簽署 MOU</b><em>→</em></a>
+  </div>
+</main>
+
+<section class="feature">
+  <div class="feature__img">
+    <img src="../assets/img/travel-fair.jpg" alt="">
+    <p>TTE 台北國際旅展 · 台北世界貿易中心</p>
+  </div>
+  <div class="feature__list">
+    <a href="#"><i>01</i><b>會員服務</b></a>
+    <a href="#"><i>02</i><b>法規諮詢</b></a>
+    <a href="#"><i>03</i><b>教育訓練</b></a>
+    <a href="#"><i>04</i><b>國際交流</b></a>
+    <a href="#"><i>05</i><b>數位轉型與 AI 導入</b></a>
+  </div>
+</section>
+
+<footer><span>© 2026 台北市旅行商業同業公會</span><span>概念 C · 規線 × 大圖大字</span></footer>
+</body>
+</html>

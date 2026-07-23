@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概念 B｜東方留白（原研哉式）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c2836; --soft:#55626f; --faint:#98a2ac; --gold:#b99b4a; --hair:#e5e8eb; --bg:#fbfcfc; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Noto Sans TC",sans-serif; font-weight:300; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 40px; }
+
+  nav.top { display:flex; justify-content:space-between; align-items:center; padding:36px 40px; max-width:1080px; margin:0 auto; }
+  nav.top img { width:34px; }
+  nav.top .links { display:flex; gap:34px; }
+  nav.top a { font-size:.8rem; color:var(--soft); text-decoration:none; letter-spacing:.1em; font-weight:400; }
+  nav.top a:hover { color:var(--ink); }
+
+  .hero { position:relative; padding:18vh 0 14vh; }
+  .hero__v {
+    position:absolute; right:56px; top:50%; transform:translateY(-50%);
+    writing-mode:vertical-rl; font-size:.85rem; letter-spacing:.5em; color:var(--faint); font-weight:400;
+  }
+  .hero h1 { font-size:clamp(2.2rem,4.6vw,3.6rem); font-weight:500; letter-spacing:.14em; line-height:1.5; }
+  .hero h1 b { font-weight:700; }
+  .hero__mark { width:10px; height:10px; background:var(--gold); margin-bottom:48px; }
+  .hero__sub { margin-top:40px; max-width:34ch; color:var(--soft); line-height:2.2; font-size:.95rem; }
+  .hero__fact { margin-top:64px; display:flex; gap:56px; }
+  .hero__fact div b { display:block; font-size:1.4rem; font-weight:500; font-variant-numeric:tabular-nums; }
+  .hero__fact div span { font-size:.72rem; color:var(--faint); letter-spacing:.2em; }
+
+  .photo { margin:8vh 0; }
+  .photo img { width:72%; display:block; filter:saturate(.6); }
+  .photo figcaption { margin-top:14px; font-size:.75rem; color:var(--faint); letter-spacing:.08em; }
+
+  .list { border-top:1px solid var(--hair); margin-bottom:16vh; }
+  .list a {
+    display:grid; grid-template-columns:120px 1fr auto; align-items:center;
+    padding:26px 8px; border-bottom:1px solid var(--hair);
+    text-decoration:none; color:var(--ink); transition:padding .35s ease;
+  }
+  .list a:hover { padding-left:24px; }
+  .list i { font-style:normal; font-size:.75rem; color:var(--faint); letter-spacing:.15em; }
+  .list b { font-weight:400; font-size:1.02rem; letter-spacing:.06em; }
+  .list em { font-style:normal; color:var(--faint); font-size:.85rem; }
+  .sec-label { font-size:.72rem; letter-spacing:.4em; color:var(--faint); margin-bottom:36px; }
+
+  footer { border-top:1px solid var(--hair); padding:36px 0 48px; font-size:.75rem; color:var(--faint); display:flex; justify-content:space-between; letter-spacing:.1em; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <img src="../assets/img/tata-logo.png" alt="TATA">
+  <div class="links"><a href="#">公會介紹</a><a href="#">最新消息</a><a href="#">活動專區</a><a href="#">數位服務</a><a href="#">會員名錄</a><a href="#">聯絡我們</a></div>
+</nav>
+
+<header class="wrap hero">
+  <p class="hero__v">台北市旅行商業同業公會</p>
+  <div class="hero__mark"></div>
+  <h1>凝聚旅行<br><b>產業力量</b></h1>
+  <p class="hero__sub">自一九六九年。台灣最大旅行產業組織，與一千四百家會員旅行社，共同推動台灣觀光競爭力。</p>
+  <div class="hero__fact">
+    <div><b>1969</b><span>創立</span></div>
+    <div><b>1,459</b><span>會員</span></div>
+    <div><b>18</b><span>委員會</span></div>
+  </div>
+</header>
+
+<figure class="wrap photo">
+  <img src="../assets/img/skyline-night.jpg" alt="">
+  <figcaption>台北・夜</figcaption>
+</figure>
+
+<main class="wrap">
+  <p class="sec-label">服務索引</p>
+  <div class="list">
+    <a href="#"><i>01</i><b>會員服務</b><em>入會・年費・會員證</em></a>
+    <a href="#"><i>02</i><b>法規諮詢</b><em>法規・簽證・消保</em></a>
+    <a href="#"><i>03</i><b>教育訓練</b><em>考照・培訓・工作坊</em></a>
+    <a href="#"><i>04</i><b>國際交流</b><em>會展・夥伴・商機</em></a>
+    <a href="#"><i>05</i><b>數位轉型</b><em>諮詢・導入・輔導</em></a>
+    <a href="#"><i>06</i><b>AI 工具導入</b><em>行程・客服・行銷</em></a>
+    <a href="#"><i>07</i><b>產業媒合</b><em>B2B・供應商・引薦</em></a>
+    <a href="#"><i>08</i><b>危機處理</b><em>應對・協調・諮詢</em></a>
+  </div>
+</main>
+
+<footer class="wrap"><span>© 2026 台北市旅行商業同業公會</span><span>概念 B · 東方留白</span></footer>
+</body>
+</html>
