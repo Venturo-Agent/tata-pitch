@@ -13,6 +13,18 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
   /* ---------- 報價書專用元件（沿用全站 token） ---------- */
+  /* Hero 背景照片 */
+  .page-hero--photo { position: relative; overflow: hidden; background: var(--navy-950); }
+  .page-hero--photo .page-hero__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: var(--img-tone);
+  }
+  .page-hero--photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(8, 21, 39, 0.84) 0%, rgba(13, 36, 64, 0.88) 65%, rgba(8, 21, 39, 0.95) 100%);
+  }
+  .page-hero--photo .wrap { position: relative; z-index: 1; }
+
   .q-hero__meta {
     display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
     margin-top: 2rem; padding-top: 1.4rem;
@@ -20,6 +32,12 @@
     font-size: 0.92rem; color: rgba(255, 255, 255, 0.78);
   }
   .q-hero__meta strong { color: var(--gold-500); font-weight: 500; margin-right: 0.5em; }
+
+  /* 概述配圖（7:5 錯位） */
+  .q-about { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .q-about__media { margin: 0; }
+  .q-about__media img { display: block; width: 100%; border-radius: var(--radius); filter: var(--img-tone); }
+  .q-about__media figcaption { margin-top: 0.7rem; font-size: 0.82rem; color: var(--muted); }
 
   /* 工作範圍：編號列表 */
   .scope-list { border-top: 1px solid var(--line); margin-top: 2.5rem; }
@@ -45,20 +63,69 @@
   }
   .scope-note { margin-top: 1.6rem; font-size: 0.92rem; color: var(--muted); }
 
-  /* 時程：月份列（深藍段） */
-  .phase-list { border-top: 1px solid var(--line-dark, rgba(255,255,255,0.16)); margin-top: 2.5rem; }
-  .phase-row {
-    display: grid; grid-template-columns: 140px 220px 1fr; gap: 1.5rem;
-    align-items: baseline; padding: 1.8rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  /* 系統架構示意圖 */
+  .arch { margin-top: 3rem; }
+  .arch__grid { display: grid; grid-template-columns: 1fr 56px 0.9fr 56px 1fr; align-items: center; }
+  .arch__col { display: flex; flex-direction: column; gap: 0.9rem; }
+  .arch__box {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    background: #fff; padding: 1.1rem 1.25rem;
   }
-  .phase-row__month {
-    font-family: var(--serif); font-weight: 700; font-size: 1.6rem;
+  .arch__box h4 { font-size: 1rem; color: var(--ink); margin: 0; }
+  .arch__box p { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.6; }
+  .arch__box--site { border-color: var(--navy-900); border-width: 1.5px; }
+  .arch__box--hub {
+    background: var(--navy-900); border-color: var(--navy-900);
+    text-align: center; padding: 1.6rem 1.25rem;
+  }
+  .arch__box--hub h4 { color: #fff; font-size: 1.1rem; }
+  .arch__box--hub p { color: rgba(255, 255, 255, 0.68); }
+  .arch__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+  .arch__chips span {
+    font-size: 0.78rem; padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 999px; color: var(--body);
+  }
+  .arch__link { position: relative; align-self: stretch; display: flex; align-items: center; }
+  .arch__link::before { content: ""; width: 100%; height: 1.5px; background: var(--gold-500); }
+  .arch__link::after {
+    content: ""; position: absolute; right: -1px;
+    border: 5.5px solid transparent; border-left-color: var(--gold-500);
+  }
+
+  /* 時程：金線節點 timeline（深藍段） */
+  .timeline {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem;
+    margin-top: 3.2rem; position: relative;
+  }
+  .timeline::before {
+    content: ""; position: absolute; top: 8px; left: 0; right: 0;
+    height: 1.5px; background: rgba(255, 255, 255, 0.22);
+  }
+  .tl { position: relative; padding-top: 2.6rem; }
+  .tl::before {
+    content: ""; position: absolute; top: 1px; left: 0;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--navy-950); border: 2px solid var(--gold-500);
+  }
+  .tl__month {
+    font-family: var(--serif); font-weight: 700; font-size: 1.55rem;
     color: var(--gold-500); letter-spacing: 0.05em;
   }
-  .phase-row__month small { display: block; font-size: 0.72rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); margin-top: 0.3rem; font-weight: 400; }
-  .phase-row__title { font-weight: 700; font-size: 1.12rem; color: #fff; }
-  .phase-row__desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.72); }
+  .tl__month small { display: block; font-size: 0.7rem; letter-spacing: 0.22em; color: rgba(255, 255, 255, 0.5); margin-top: 0.3rem; font-weight: 400; }
+  .tl__title { font-weight: 700; font-size: 1.1rem; color: #fff; margin-top: 0.9rem; }
+  .tl__desc { font-size: 0.94rem; color: rgba(255, 255, 255, 0.72); margin-top: 0.5rem; }
+
+  /* CTA 背景照片 */
+  .q-cta--photo { position: relative; overflow: hidden; }
+  .q-cta--photo .q-cta__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: var(--img-tone);
+  }
+  .q-cta--photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: rgba(8, 21, 39, 0.86);
+  }
+  .q-cta--photo .wrap { position: relative; z-index: 1; }
 
   /* 費用表 */
   .fee-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-variant-numeric: tabular-nums; }
@@ -94,7 +161,15 @@
   .terms-list__k { font-weight: 700; color: var(--ink); }
 
   @media (max-width: 760px) {
-    .phase-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .q-about { grid-template-columns: 1fr; }
+    .arch__grid { grid-template-columns: 1fr; }
+    .arch__link { height: 36px; justify-content: center; }
+    .arch__link::before { width: 1.5px; height: 100%; }
+    .arch__link::after { right: auto; bottom: -1px; border: 5.5px solid transparent; border-top-color: var(--gold-500); }
+    .timeline { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline::before { top: 0; bottom: 0; left: 7px; right: auto; width: 1.5px; height: auto; }
+    .tl { padding-top: 0; padding-left: 2.2rem; }
+    .tl::before { top: 4px; }
     .terms-list li { grid-template-columns: 1fr; gap: 0.3rem; }
     .fee-total { grid-template-columns: 1fr; gap: 0.8rem; }
   }
@@ -212,7 +287,8 @@
 </div>
 
 
-<section class="page-hero">
+<section class="page-hero page-hero--photo">
+  <img class="page-hero__bg" src="assets/img/hero-sunset.jpg" alt="">
   <div class="wrap">
     <p class="page-hero__crumb"><a href="index.html">首頁</a> ／ 專案報價</p>
     <h1>官網整合建置專案 報價書</h1>
@@ -228,9 +304,15 @@
 
 <!-- ============ 專案概述 ============ -->
 <section class="page-section page-section--paper">
-  <div class="wrap" style="max-width:860px">
-    <h2 class="sub-title">專案概述</h2>
-    <p class="sub-lead">現行官網的服務各自獨立——最新消息、影音媒體專區、線上報名服務、工會場地租借服務、電子公文服務與 AI 客服分散於不同系統，內容繁雜、維護不易。本案以「整合」為核心：重建官網架構、整併既有內容，並開發四大核心功能與完整後台管理系統，串接公會內部行政流程；同時以數位金流串接銀行端，減輕每年會費與活動的對帳負擔，讓網站成為公會可長期自主營運的數位平台。</p>
+  <div class="wrap q-about" style="max-width:1080px">
+    <div>
+      <h2 class="sub-title">專案概述</h2>
+      <p class="sub-lead">現行官網的服務各自獨立——最新消息、影音媒體專區、線上報名服務、工會場地租借服務、電子公文服務與 AI 客服分散於不同系統，內容繁雜、維護不易。本案以「整合」為核心：重建官網架構、整併既有內容，並開發四大核心功能與完整後台管理系統，串接公會內部行政流程；同時以數位金流串接銀行端，減輕每年會費與活動的對帳負擔，讓網站成為公會可長期自主營運的數位平台。</p>
+    </div>
+    <figure class="q-about__media">
+      <img src="assets/img/taipei-101-twtc.jpg" alt="台北 101 與台北世界貿易中心">
+      <figcaption>台北 101 與台北世貿——TTE 台北國際旅展主場館。</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -293,26 +375,70 @@
   </div>
 </section>
 
+<!-- ============ 系統架構示意 ============ -->
+<section class="page-section page-section--paper">
+  <div class="wrap" style="max-width:1080px">
+    <h2 class="sub-title">系統架構示意</h2>
+    <p class="sub-lead">官網與 TTE 旅展網站共用同一套後台管理系統，並向後串接金流與公會內部行政流程——一個後台，支撐全部服務。</p>
+    <div class="arch">
+      <div class="arch__grid">
+        <div class="arch__col">
+          <div class="arch__box arch__box--site">
+            <h4>TATA 官網</h4>
+            <div class="arch__chips"><span>電子公文</span><span>場地租借</span><span>AI 客服</span><span>收款金流</span></div>
+          </div>
+          <div class="arch__box arch__box--site">
+            <h4>TTE 旅展網站</h4>
+            <p>切版與架構建置，素材設計由公會提供</p>
+          </div>
+        </div>
+        <div class="arch__link" aria-hidden="true"></div>
+        <div class="arch__col">
+          <div class="arch__box arch__box--hub">
+            <h4>後台管理系統</h4>
+            <p>公會自主維運：內容發佈・圖片更換・組織異動調整</p>
+          </div>
+        </div>
+        <div class="arch__link" aria-hidden="true"></div>
+        <div class="arch__col">
+          <div class="arch__box">
+            <h4>永豐銀行金流</h4>
+            <p>線上收款・自動對帳</p>
+          </div>
+          <div class="arch__box">
+            <h4>帳務流程</h4>
+            <p>會費・活動款項整合</p>
+          </div>
+          <div class="arch__box">
+            <h4>會計請款系統</h4>
+            <p>請款功能與流程串接</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 專案時程 ============ -->
 <section class="page-section page-section--navy">
   <div class="wrap" style="max-width:960px">
     <h2 class="sub-title">專案時程</h2>
     <p class="sub-lead">專案走期為一季（2026 年 8 月至 10 月），三個月的工作規劃如下。</p>
-    <div class="phase-list">
-      <div class="phase-row">
-        <div class="phase-row__month">八月<small>AUG 2026</small></div>
-        <div class="phase-row__title">架構確立・內容盤點</div>
-        <p class="phase-row__desc">網站架構與設計方向定稿、既有內容盤點與整合規劃、核心功能開發啟動。</p>
+    <div class="timeline">
+      <div class="tl">
+        <div class="tl__month">八月<small>AUG 2026</small></div>
+        <div class="tl__title">架構確立・內容盤點</div>
+        <p class="tl__desc">網站架構與設計方向定稿、既有內容盤點與整合規劃、核心功能開發啟動。</p>
       </div>
-      <div class="phase-row">
-        <div class="phase-row__month">九月<small>SEP 2026</small></div>
-        <div class="phase-row__title">功能開發・後台建置</div>
-        <p class="phase-row__desc">電子公文、場地租借、AI 客服、收款金流四大核心功能開發，後台管理系統建置，帳務與會計請款流程串接，TTE 旅展網站切版與後台串接。</p>
+      <div class="tl">
+        <div class="tl__month">九月<small>SEP 2026</small></div>
+        <div class="tl__title">功能開發・後台建置</div>
+        <p class="tl__desc">電子公文、場地租借、AI 客服、收款金流四大核心功能開發，後台管理系統建置，帳務與會計請款流程串接，TTE 旅展網站切版與後台串接。</p>
       </div>
-      <div class="phase-row">
-        <div class="phase-row__month">十月<small>OCT 2026</small></div>
-        <div class="phase-row__title">金流串接・驗收上線</div>
-        <p class="phase-row__desc">金流服務串接、全站測試與調整、驗收上線，以及後台操作交接。</p>
+      <div class="tl">
+        <div class="tl__month">十月<small>OCT 2026</small></div>
+        <div class="tl__title">金流串接・驗收上線</div>
+        <p class="tl__desc">金流服務串接、全站測試與調整、驗收上線，以及後台操作交接。</p>
       </div>
     </div>
   </div>
